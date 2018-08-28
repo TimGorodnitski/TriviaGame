@@ -1,0 +1,47 @@
+body {
+    background-image: url("../images/bananas.png");
+}
+
+#container {
+    width:960px;
+    padding:10px 20px;
+    background-color:lemonchiffon;
+    margin: 20px auto;
+}
+
+header {
+    text-align: center;
+    font-size:40px;
+    font-family: cursive;
+    background-color: lightgrey;
+    margin-bottom: 10px;
+}
+
+#gameDiv {
+    background-color: lightpink;
+    padding:10px 10px;
+}
+
+#timer {
+    padding:20px 0px;
+    background-color: wheat;
+    text-align:center;
+}
+
+#question {
+    padding:20px 0px;
+    text-align: center;
+    background-color: darkcyan;
+}
+
+#choices {
+    text-align: center;
+    background-color: lightskyblue;
+    padding:20px 0;
+}
+
+#solutionPic {
+    text-align:center;
+    background-color: yellow;
+    padding:20px 0;
+}
