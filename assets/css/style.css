@@ -17,6 +17,26 @@ header {
     margin-bottom: 10px;
 }
 
+#start {
+    padding: 30px 20px;
+    background-color: aquamarine;
+}
+
+#startButton {
+    padding: 10px 20px;
+    background-color: fuchsia;
+    text-align: center;
+    font-size:40px;
+    font-family: cursive;
+    max-width:30%;
+    margin: 0 auto;
+}
+
+#startButton:hover {
+    Background-color: red;
+    color:green;
+}
+
 #gameDiv {
     background-color: lightpink;
     padding:10px 10px;
