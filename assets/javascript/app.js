@@ -2,6 +2,10 @@ let correct = 0;
 let incorrect = 0;
 let unanswered = 0;
 
+let timeLeft = 30;
+$("#timer").find("span").text(timeLeft);
+
+
 
 
 
@@ -52,17 +56,29 @@ var questions = [
 ];
 
 
-
 $("#startButton").click(function () {
     $("#start").hide();
     $("#gameDiv").show();
     questionStart();
+    var timerId = setInterval(countdown, 1000);
+    function countdown() {
+        if (timeLeft === 0) {
+            clearTimeout(timerId);
+        } else {
+            timeLeft--;
+            $("#timer").find("span").text(timeLeft);
+    
+        }
+    };
+
 })
 
 let i = 0;
 
 function questionStart() {
 
+
+    // checks if you've finished all the questions
     if (i < questions.length) {
 
         $("#question span").text(questions[i].question);
@@ -72,7 +88,7 @@ function questionStart() {
         $("#choice3 span").text(questions[i].answers[3]);
 
     } else {
-
+        // hide the game and update the final stats div, then display it
         $("#gameDiv").hide();
         $("#correct").find("span").text("Correct: " + correct);
         $("#incorrect").find("span").text("Incorrect: " + incorrect);
