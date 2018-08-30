@@ -40,6 +40,7 @@ header {
 #gameDiv {
     background-color: lightpink;
     padding:10px 10px;
+    display:none;
 }
 
 #timer {
@@ -60,7 +61,16 @@ header {
     padding:20px 0;
 }
 
-#solutionPic {
+.choice {
+    padding:20px 0px;
+    background-color: paleturquoise;
+}
+
+.choice:hover {
+    background-color: green;
+}
+
+#solution {
     text-align:center;
     background-color: yellow;
     padding:20px 0;
