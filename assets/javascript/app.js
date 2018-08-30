@@ -5,7 +5,6 @@ let unanswered = 0;
 
 
 
-
 var questions = [
     {   // question 1
         question: "You're running in a race. You're almost at the finish line when you pass the competitor in second place! What place are you now in?",
@@ -138,11 +137,32 @@ $(".choice").click(function questionAnswer() {
 
     if ($(this).find("span").text() === questions[i].correctAnswer) {
 
+        $("#gameDiv").hide();
+
+        $("#solution").show();
+
+        setTimeout(function () { $("#gameDiv").show() }, 2000)
+
+        $("#solutionPic").attr("src", "http://www.clker.com/cliparts/9/M/v/f/H/d/correct-mark-hi.png");
+
+        setTimeout(function () { $("#solution").hide() }, 2000);
+
         correct++;
 
     } else {
 
+        $("#gameDiv").hide();
+
+        $("#solution").show();
+
+        setTimeout(function () { $("#gameDiv").show() }, 2000)
+
+        $("#solutionPic").attr("src", "https://i.imgflip.com/1bpxyu.jpg");
+
+        setTimeout(function () { $("#solution").hide() }, 2000);
+
         incorrect++;
+
     };
 
     i++;
