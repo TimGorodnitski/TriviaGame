@@ -53,25 +53,29 @@ header {
     padding:20px 0px;
     text-align: center;
     background-color: darkcyan;
+    font-size: 60px;
 }
 
 #choices {
     text-align: center;
     background-color: lightskyblue;
-    padding:20px 0;
+    padding:0px 0;
 }
 
 .choice {
     padding:20px 0px;
     background-color: paleturquoise;
+    font-size: 30px;
 }
 
 .choice:hover {
     background-color: green;
+    font-size:40px;
 }
 
 #solution {
     text-align:center;
     background-color: yellow;
     padding:20px 0;
+    display:none;
 }
