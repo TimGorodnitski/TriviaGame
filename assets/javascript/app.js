@@ -42,69 +42,13 @@ var questions = [
     }, { // question 5
         question: "How many months have 28 days?",
         answers: [
-            "All of them",
             "1",
+            "2",
             "Depends if its a Leap Year",
-            "2"],
-        correctAnswer: "All of them"
+            "12"],
+        correctAnswer: "12"
     }
-    // , { // question 6
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }, { // question 7
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }, { // question 8
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }, { // question 9
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }, { // question 10
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }, { // question 11
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }, { // question 12
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }
+
 ];
 
 
@@ -118,49 +62,41 @@ $("#startButton").click(function () {
 let i = 0;
 
 function questionStart() {
+
     if (i < questions.length) {
+
         $("#question span").text(questions[i].question);
         $("#choice0 span").text(questions[i].answers[0]);
         $("#choice1 span").text(questions[i].answers[1]);
         $("#choice2 span").text(questions[i].answers[2]);
         $("#choice3 span").text(questions[i].answers[3]);
+
     } else {
+
         $("#gameDiv").hide();
         $("#correct").find("span").text("Correct: " + correct);
         $("#incorrect").find("span").text("Incorrect: " + incorrect);
         $("#unanswered").find("span").text("Unanswered: " + unanswered);
         $("#finalStats").show();
+
     }
 };
 
 $(".choice").click(function questionAnswer() {
 
     if ($(this).find("span").text() === questions[i].correctAnswer) {
-
         $("#gameDiv").hide();
-
         $("#solution").show();
-
         if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 2000) };
-
         $("#solutionPic").attr("src", "http://www.clker.com/cliparts/9/M/v/f/H/d/correct-mark-hi.png");
-
         setTimeout(function () { $("#solution").hide() }, 2000);
-
         correct++;
-
     } else {
-
         $("#gameDiv").hide();
-
         $("#solution").show();
-
         if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 2000) };
-
         $("#solutionPic").attr("src", "https://i.imgflip.com/1bpxyu.jpg");
-
         setTimeout(function () { $("#solution").hide() }, 2000);
-
         incorrect++;
 
     };
