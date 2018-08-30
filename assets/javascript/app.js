@@ -8,49 +8,48 @@ let unanswered = 0;
 
 var questions = [
     {   // question 1
-        question: "What color is the sky?",
+        question: "You're running in a race. You're almost at the finish line when you pass the competitor in second place! What place are you now in?",
         answers: [
-            "Blue",
-            "Green",
-            "Pink",
-            "Red"],
-        correctAnswer: "Blue"
+            "First",
+            "Second",
+            "Third",
+            "Fourth"],
+        correctAnswer: "Second"
     }, { // question 2
-        question: "Who is our President?",
+        question: "Before Mount Everest was discovered, what was the tallest mountain on Earth?",
         answers: [
-            "Blue",
-            "Trump",
-            "Pink",
-            "Red"],
-        correctAnswer: "Trump"
+            "K2",
+            "Kanchenjunga",
+            "Lhotse",
+            "Everest"],
+        correctAnswer: "Everest"
     }, { // question 3
-        question: "This answer is D",
+        question: "There are 12 apples in a barrel. If you take away 5, how many do you have?",
         answers: [
-            "A",
-            "B",
-            "C",
-            "D"],
-        correctAnswer: "D"
+            "5",
+            "12",
+            "7",
+            "17"],
+        correctAnswer: "5"
+    }, {
+        // question 4
+        question: "If the vice president were to die, who is supposed to be president?",
+        answers: [
+            "The Speaker of the House",
+            "The Attorney General",
+            "The Vice President",
+            "The President"],
+        correctAnswer: "The President"
+    }, { // question 5
+        question: "How many months have 28 days?",
+        answers: [
+            "All of them",
+            "1",
+            "Depends if its a Leap Year",
+            "2"],
+        correctAnswer: "All of them"
     }
-
-
-    // }, { // question 4
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }, { // question 5
-    //     question: "Question?",
-    //     answers: [
-    //         "Answer1",
-    //         "Answer2",
-    //         "Answer3",
-    //         "Answer4"],
-    //     correctAnswer: "Answer4"
-    // }, { // question 6
+    // , { // question 6
     //     question: "Question?",
     //     answers: [
     //         "Answer1",
@@ -128,6 +127,9 @@ function questionStart() {
         $("#choice3 span").text(questions[i].answers[3]);
     } else {
         $("#gameDiv").hide();
+        $("#correct").find("span").text("Correct: " + correct);
+        $("#incorrect").find("span").text("Incorrect: " + incorrect);
+        $("#unanswered").find("span").text("Unanswered: " + unanswered);
         $("#finalStats").show();
     }
 };
