@@ -128,6 +128,7 @@ function questionStart() {
         $("#choice3 span").text(questions[i].answers[3]);
     } else {
         $("#gameDiv").hide();
+        $("#finalStats").show();
     }
 };
 
