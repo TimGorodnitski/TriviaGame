@@ -1,9 +1,9 @@
 let correct = 0;
 let incorrect = 0;
 let unanswered = 0;
-
+let timer;
 let timeLeft = 30;
-$("#timer").find("span").text(timeLeft);
+$("#timer").find("span").text("Time remaining: " + timeLeft);
 
 
 
@@ -60,14 +60,25 @@ $("#startButton").click(function () {
     $("#start").hide();
     $("#gameDiv").show();
     questionStart();
+
     var timerId = setInterval(countdown, 1000);
+    timer = timerId;
+    
     function countdown() {
         if (timeLeft === 0) {
             clearTimeout(timerId);
+            unanswered++;
+            $("#gameDiv").hide();
+            $("#solution").show();
+            if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 2000) };
+            $("#solutionPic").attr("src", "https://i.imgflip.com/1bpxyu.jpg");
+            setTimeout(function () { $("#solution").hide() }, 2000);
+    
+
         } else {
             timeLeft--;
-            $("#timer").find("span").text(timeLeft);
-    
+            $("#timer").find("span").text("Time remaining: " + timeLeft);
+
         }
     };
 
@@ -116,6 +127,8 @@ $(".choice").click(function questionAnswer() {
         incorrect++;
 
     };
+
+
 
     i++;
     questionStart();
