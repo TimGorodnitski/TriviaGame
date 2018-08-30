@@ -141,7 +141,7 @@ $(".choice").click(function questionAnswer() {
 
         $("#solution").show();
 
-        setTimeout(function () { $("#gameDiv").show() }, 2000)
+        if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 2000) };
 
         $("#solutionPic").attr("src", "http://www.clker.com/cliparts/9/M/v/f/H/d/correct-mark-hi.png");
 
@@ -155,7 +155,7 @@ $(".choice").click(function questionAnswer() {
 
         $("#solution").show();
 
-        setTimeout(function () { $("#gameDiv").show() }, 2000)
+        if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 2000) };
 
         $("#solutionPic").attr("src", "https://i.imgflip.com/1bpxyu.jpg");
 
