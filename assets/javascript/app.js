@@ -1,8 +1,9 @@
 let correct = 0;
 let incorrect = 0;
 let unanswered = 0;
-let timer;
-let timeLeft = 30;
+
+let timeLeft = 20;
+
 $("#timer").find("span").text("Time remaining: " + timeLeft);
 
 
@@ -17,7 +18,8 @@ var questions = [
             "Second",
             "Third",
             "Fourth"],
-        correctAnswer: "Second"
+        correctAnswer: "Second",
+        explanation: "HE was in 2nd, so now YOU are in 2nd."
     }, { // question 2
         question: "Before Mount Everest was discovered, what was the tallest mountain on Earth?",
         answers: [
@@ -25,7 +27,8 @@ var questions = [
             "Kanchenjunga",
             "Lhotse",
             "Everest"],
-        correctAnswer: "Everest"
+        correctAnswer: "Everest",
+        explanation: "Everest was still the tallest mountain before we discovered it."
     }, { // question 3
         question: "There are 12 apples in a barrel. If you take away 5, how many do you have?",
         answers: [
@@ -33,7 +36,8 @@ var questions = [
             "12",
             "7",
             "17"],
-        correctAnswer: "5"
+        correctAnswer: "5",
+        explanation: "YOU take away 5, so YOU have 5. The barrel has the other 7."
     }, {
         // question 4
         question: "If the vice president were to die, who is supposed to be president?",
@@ -42,7 +46,8 @@ var questions = [
             "The Attorney General",
             "The Vice President",
             "The President"],
-        correctAnswer: "The President"
+        correctAnswer: "The President",
+        explanation: "The President didn't die."
     }, { // question 5
         question: "How many months have 28 days?",
         answers: [
@@ -50,7 +55,8 @@ var questions = [
             "2",
             "Depends if its a Leap Year",
             "12"],
-        correctAnswer: "12"
+        correctAnswer: "12",
+        explanation: "Every month has 28 days, but most of them have more."
     }
 
 ];
@@ -62,20 +68,31 @@ $("#startButton").click(function () {
     questionStart();
 
     var timerId = setInterval(countdown, 1000);
-    timer = timerId;
     
     function countdown() {
+
+        // Time's up trigger.
         if (timeLeft === 0) {
-            clearTimeout(timerId);
+
             unanswered++;
+
+            // hides the gameDiv but starts a timer to show it after 2 seconds, unless this was the last question
             $("#gameDiv").hide();
+            if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 5000) };
+
+            // Shows a picture, then hides it after 2 seconds.
             $("#solution").show();
-            if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 2000) };
             $("#solutionPic").attr("src", "https://i.imgflip.com/1bpxyu.jpg");
-            setTimeout(function () { $("#solution").hide() }, 2000);
-    
+            $("#solution span").text(questions[i].explanation);
+            setTimeout(function () { $("#solution").hide() }, 5000);
+
+            // Reset the timer, iterate i, start the next question
+            timeLeft = 25;
+            i++;
+            questionStart();
 
         } else {
+            // take 1 second off the timeleft and display it, repeat until ^ condition is met or timeleft is reset
             timeLeft--;
             $("#timer").find("span").text("Time remaining: " + timeLeft);
 
@@ -104,7 +121,7 @@ function questionStart() {
         $("#correct").find("span").text("Correct: " + correct);
         $("#incorrect").find("span").text("Incorrect: " + incorrect);
         $("#unanswered").find("span").text("Unanswered: " + unanswered);
-        $("#finalStats").show();
+        setTimeout(function(){  $("#finalStats").show();}, 5000);
 
     }
 };
@@ -114,22 +131,24 @@ $(".choice").click(function questionAnswer() {
     if ($(this).find("span").text() === questions[i].correctAnswer) {
         $("#gameDiv").hide();
         $("#solution").show();
-        if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 2000) };
+        if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 5000) };
         $("#solutionPic").attr("src", "http://www.clker.com/cliparts/9/M/v/f/H/d/correct-mark-hi.png");
-        setTimeout(function () { $("#solution").hide() }, 2000);
+        $("#solution span").text(questions[i].explanation);
+        setTimeout(function () { $("#solution").hide() }, 5000);
         correct++;
     } else {
         $("#gameDiv").hide();
         $("#solution").show();
-        if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 2000) };
+        if (i < questions.length - 1) { setTimeout(function () { $("#gameDiv").show() }, 5000) };
         $("#solutionPic").attr("src", "https://i.imgflip.com/1bpxyu.jpg");
-        setTimeout(function () { $("#solution").hide() }, 2000);
+        $("#solution span").text(questions[i].explanation);
+        setTimeout(function () { $("#solution").hide() }, 5000);
         incorrect++;
 
     };
 
 
-
+    timeLeft = 25;
     i++;
     questionStart();
 
